@@ -28,4 +28,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_PREBUILT_KERNEL := device/tcl/p301m/kernel
 
+-include vendor/tcl/p301m/BoardConfigVendor.mk
+
 BOARD_HAS_NO_SELECT_BUTTON := true
