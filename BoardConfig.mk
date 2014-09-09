@@ -23,6 +23,10 @@ TARGET_BOOTLOADER_BOARD_NAME := p301m
 #      For now modify that other .mk file; later we can try upgrading to a version 2 fstab file (which fixes a few things).
 #TARGET_USERIMAGES_USE_EXT4 := true
 
+#Testing:
+PRIVATE_RECOVERY_FSTAB_VERSION := 2
+TARGET_USERIMAGES_USE_EXT4 := true
+
 BOARD_KERNEL_CMDLINE := console=ttyMT0,921600n1 vmalloc=496M slub_max_order=0 lcm=1-ili9806e_wvga_dsi_vdo_zgd fps=6134 bootprof.pl_t=3969 bootprof.lk_t=2737 printk.disable_uart=1 boot_reason=2
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 4096

@@ -1,11 +1,25 @@
+#OLD:
 # mount point    fstype    device        [device2]
 
-/misc       emmc    /dev/misc
-/data       ext4    /dev/block/mmcblk0p7
-/system     ext4    /dev/block/mmcblk0p5
-/cache      ext4    /dev/block/mmcblk0p6
-/boot       emmc    /dev/bootimg
-/recovery   emmc    /dev/recovery
-/emmc       vfat    /dev/block/mmcblk0p8
-/sdcard     vfat    /dev/block/mmcblk1p1    /dev/block/mmcblk1
-/sd-ext     auto    /dev/block/mmcblk1p2
+#NEW:
+# Android fstab file.
+#<src>                                         <mnt_point>  <type>  <mnt_flags and options>  <fs_mgr_flags>
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+/dev/misc               /misc      emmc    defaults                                defaults
+/dev/block/mmcblk0p7    /data      ext4    noatime,nosuid,nodev,noauto_da_alloc    wait,check
+/dev/block/mmcblk0p5    /system    ext4    ro                                      wait
+/dev/block/mmcblk0p6    /cache     ext4    noatime,nosuid,nodev                    wait,check
+/dev/bootimg            /boot      emmc    defaults                                defaults
+/dev/recovery           /recovery  emmc    defaults                                defaults
+/dev/block/mmcblk0p8    /emmc      vfat    defaults                                defaults
+/dev/block/mmcblk1p1    /sdcard    vfat    defaults                                defaults
+/dev/block/mmcblk1p2    /sd-ext    auto    defaults                                defaults
+
+
+#Not sure about the following (for settings, or /sdcard having two sources)
+#/emmc       vfat    /dev/block/mmcblk0p8
+#/sdcard     vfat    /dev/block/mmcblk1p1    /dev/block/mmcblk1
+#/sd-ext     auto    /dev/block/mmcblk1p2
+
